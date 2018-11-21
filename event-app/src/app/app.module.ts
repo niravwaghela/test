@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { signUpComponent } from './sign-up/sign-up.component';
 import { ReactiveFormsModule} from '@angular/forms';
 import {signUpService} from './sign-up/services/signup.service'
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [

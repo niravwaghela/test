@@ -1,4 +1,3 @@
-
 <div class="signup-form ">
     <form [formGroup]="signUpForm" (ngSubmit)= "onSubmit(signUpForm.value)">
 		<h2>Register</h2>
@@ -17,7 +16,7 @@
         </div>
 		<div class="form-group">
             <input type="password" [class.is-invalid]="signUpForm.errors?.mismatch"formControlName= "cnfmPassword" class="form-control" name="confirm_password" placeholder="Confirm Password" >
-            <!-- <small class="text-danger" *ngIf="signUpForm.errors?.mismatch">Password does not match</small> -->
+            <small class="text-danger" *ngIf="signUpForm.errors?.mismatch">Password does not match</small> 
         </div>
 		<div class="form-group">
             <button type="submit" [disabled]="signUpForm.invalid" class="btn btn-success btn-lg btn-block">Register Now</button>

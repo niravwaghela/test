@@ -23,15 +23,15 @@ export class signUpComponent{
     //      return null
     //   };
 
-    signUpForm = this.fb.group({
-
+    signUpForm = this.fb.group(
+        {
         firstName: ['',[Validators.required,Validators.minLength(3)]],
         lastName: ['',[Validators.required,Validators.minLength(3)]],
         email: ['',Validators.required],
         password: ['',Validators.required],
         cnfmPassword: ['',Validators.required],
         
-        },{Validator:passwordValidator})
+        },{ validator: passwordValidator})
     
 
     onSubmit(signUpForm){
