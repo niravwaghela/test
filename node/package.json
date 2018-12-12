@@ -4,12 +4,16 @@
   "description": "web-server",
   "main": "index.js",
   "dependencies": {
+    "bcrypt": "^3.0.2",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
+    "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.3.12",
     "popper.js": "^1.14.4"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
