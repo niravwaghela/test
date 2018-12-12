@@ -1,4 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+/* body{
+    background-color:rgb(216, 164, 164);
+
+} */
 body{
-    background-color:#919191;
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url("assets/images/Event.jpg");
+    background-size: cover;
+    background-position: center;
+    /* height: 100vh; */
+    background-attachment: fixed;
 }

@@ -4,11 +4,12 @@ import { HttpClient } from "@angular/common/http";
 @Injectable({
   providedIn: "root"
 })
-export class signUpService {
-  url = "http://localhost:3003/signUp";
+export class allEventsService {
+  url = "http://localhost:3003/events";
 
   constructor(private http: HttpClient) {}
-  signUp(user: any) {
-    return this.http.post<any>(this.url, user);
+  allEvents() {
+    return this.http.get<any>(this.url);
   }
+
 }

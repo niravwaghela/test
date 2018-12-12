@@ -1,0 +1,59 @@
+<div class="event-form">
+  <form [formGroup]="event" (ngSubmit)="onSubmit(event.value)">
+    <h2>Create event</h2>
+    <div class="form-group">
+      <input
+        type="text"
+        formControlName="eventName"
+        class="form-control"
+        name="eventName"
+        placeholder="Event Name"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        formControlName="eventDescription"
+        class="form-control"
+        name="eventDescription"
+        placeholder="Description"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="number"
+        formControlName="eventDuration"
+        class="form-control"
+        placeholder="Duration in Hours"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="text"
+        formControlName="eventLocation"
+        class="form-control"
+        name="eventLocation"
+        placeholder="Location"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="number"
+        formControlName="eventFees"
+        class="form-control"
+        name="eventFees"
+        placeholder="Fees"
+      />
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-success btn-lg btn-block">
+        Create Event
+      </button>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-warning btn-lg btn-block">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

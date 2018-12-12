@@ -1,27 +1,75 @@
 <div class="signup-form ">
-    <form [formGroup]="signUpForm" (ngSubmit)= "onSubmit(signUpForm.value)">
-		<h2>Register</h2>
-		<p class="hint-text">Create your account. It's free and only takes a minute.</p>
-        <div class="form-group">
-			<div class="row">
-				<div class="col-6"><input type="text" formControlName= "firstName" class="form-control" name="first_name" placeholder="First Name" ></div>
-				<div class="col-6"><input type="text" formControlName= "lastName" class="form-control" name="last_name" placeholder="Last Name" ></div>
-			</div>        	
+  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm.value)">
+    <h2>Register</h2>
+    <p class="hint-text">
+      Create your account. It's free and only takes a minute.
+    </p>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-6">
+          <input
+            type="text"
+            formControlName="firstName"
+            class="form-control"
+            name="first_name"
+            placeholder="First Name"
+          />
         </div>
-        <div class="form-group">
-        	<input type="email" formControlName="email" class="form-control" name="email" email="true" placeholder="Email" >
+        <div class="col-6">
+          <input
+            type="text"
+            formControlName="lastName"
+            class="form-control"
+            name="last_name"
+            placeholder="Last Name"
+          />
         </div>
-		<div class="form-group">
-            <input type="password" formControlName= "password" class="form-control" name="password" placeholder="Password" >
-        </div>
-		<div class="form-group">
-            <input type="password" [class.is-invalid]="signUpForm.errors?.mismatch"formControlName= "cnfmPassword" class="form-control" name="confirm_password" placeholder="Confirm Password" >
-            <small class="text-danger" *ngIf="signUpForm.errors?.mismatch">Password does not match</small> 
-        </div>
-		<div class="form-group">
-            <button type="submit" [disabled]="signUpForm.invalid" class="btn btn-success btn-lg btn-block">Register Now</button>
-        </div>
-    </form>
-	<div class="text-center">Already have an account? <a href="#">Sign in</a></div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input
+        type="email"
+        formControlName="email"
+        class="form-control"
+        name="email"
+        email="true"
+        placeholder="Email"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        formControlName="password"
+        class="form-control"
+        name="password"
+        placeholder="Password"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        [class.is-invalid]="signUpForm.errors?.mismatch"
+        formControlName="cnfmPassword"
+        class="form-control"
+        name="confirm_password"
+        placeholder="Confirm Password"
+      />
+      <small class="text-danger" *ngIf="signUpForm.errors?.mismatch"
+        >Password does not match</small
+      >
+    </div>
+    <div class="form-group">
+      <button
+        type="submit"
+        [disabled]="signUpForm.invalid"
+        class="btn btn-success btn-lg btn-block"
+      >
+        Register Now
+      </button>
+    </div>
+  </form>
+  <div class="text-center">
+    Already have an account? <a [routerLink]="['/loginForm']">Sign in</a>
+  </div>
 </div>
-{{signUpForm.value | json}}
+{{ signUpForm.value | json }}
