@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
 import { CreateEventService } from "./services/createEvent";
 import { Router, ActivatedRoute } from "@angular/router";
+import { GrowlService } from "../growl.service";
 
 @Component({
   selector: "app-create-event",
@@ -11,6 +12,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class CreateEventComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
+    private growlService : GrowlService,
     private createEventService: CreateEventService,
     private router : Router,
     private route : ActivatedRoute
@@ -24,12 +26,15 @@ export class CreateEventComponent implements OnInit {
     eventFees: ["", Validators.required]
   });
   onSubmit(event) {
-    this.getLocalUser = localStorage.getItem('user')
+    this.getLocalUser =localStorage.getItem('user');
     event.user = this.getLocalUser;
     console.log(event)
 
     this.createEventService.createEvent(event).subscribe(data => {
       console.log("success", data);
+      this.growlService.addSingle('Event Created Successfully')
+    },error=>{
+      this.growlService.showError(`${error}`)
     });
     this.event.reset();
     this.router.navigate(['dashboard/dashboardContent']),{relativeTo:this.route}

@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class RegisterUserService {
-  url = "http://localhost:3003/eventsss";
+  url = "http://localhost:3005/eventsss";
 
   constructor(private http: HttpClient) {}
   register(event: any) {

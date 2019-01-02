@@ -1,0 +1,21 @@
+
+.cardc{
+    color:rgb(12, 11, 11);
+    background-color:rgb(80, 84, 88);
+}
+
+.cardBody{
+    padding-bottom: 4px;
+    padding-right: 4px;
+    padding-top: 4px;
+    padding-left: 4px;
+
+    background-color:rgb(175, 175, 175);
+    color:rgb(12, 11, 11);
+}
+.cardiac{
+    padding-top: 20px;
+}
+.btn-space{
+    margin-right: 5px;
+}

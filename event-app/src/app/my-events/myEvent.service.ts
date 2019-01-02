@@ -4,11 +4,14 @@ import { HttpClient } from "@angular/common/http";
 @Injectable({
   providedIn: "root"
 })
-export class CreateEventService {
-  url = "http://localhost:3005/events";
+export class MyEventService {
+
+
+  url = "http://localhost:3005/myEvents";
 
   constructor(private http: HttpClient) {}
-  createEvent(event: any) {
-    return this.http.post<any>(this.url, event);
-  }
+getMyEvents(userId:any){
+    return this.http.post<any>(this.url,userId)
 }
+
+  }

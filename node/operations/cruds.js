@@ -11,6 +11,8 @@ class Operation {
             eventFees,
             user
         } = value;
+        console.log(user);
+        
         return new Promise((resolve, reject) => {
             let eventsmodel = new eventSchema();
             eventsmodel.eventName = eventName;
@@ -31,45 +33,74 @@ class Operation {
     }
 
     registerUser(req) {
-        let { user, email } = req;
-        console.log(user , email)
+        let { loggedInUser, eventUser } = req;
 
         return new Promise((resolve, reject) => {
-            eventSchema.find({  }, (error, user) => {
-                console.log(user);
-                
-                // if (error) {
-                //     reject(error);
-                // } else {
-                //     user.registerUser.push(email);
-                //     user.save((error, updatedUser) => {
-                //         if (error) {
-                //             reject(error);
-                //         } else {
-                //             console.log(updatedUser);
-                //             resolve(updatedUser);
-                //         }
-                //     });
-                //     console.log(user);
-                //     resolve(user.registerUser);
-                // }
+            eventSchema.findOne({ user: eventUser }, (error, event) => {
+                if (error) {
+                    reject(error);
+                } else {
+
+                    event.registerUser.forEach(function(message) {
+                        Object.keys(message).forEach(function(prop) {    
+                            console.log(prop + " = " + message[prop]);
+                        });
+                    });
+
+
+
+                    event.registerUser.forEach(function(element) {
+                        if (element === loggedInUser) {
+                            reject({ error: "already registered" });
+                        }
+                    });
+
+                    event.registerUser.push(loggedInUser);
+                    event.save((error, updatedUser) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            console.log(updatedUser);
+                            resolve(updatedUser);
+                        }
+                    });
+                }
+            });
+        });
+    }
+    editEvent(req) {
+        let { eventId } = req;
+        console.log(eventId);
+        return new Promise((resolve, reject) => {
+            eventSchema.findOne({ _id: eventId }, (error, event) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(event);
+                }
             });
         });
     }
 
-    // logOut(){
-    //     eventSchema.update(
-    //         {user},
-    //         {$set :{"isEditable":true}}
-    //         ) , (error , user)
+    myEvents(req) {
+        let { loggedInId,
+        firstName,
+    lastName } = req;
 
-    // }
+        return new Promise((resolve, reject) => {
+            eventSchema.find({ user: loggedInId }, (error, event) => {
+                console.log(event);
+                
+                resolve(event,firstName,lastName)
+            });
+        });
+    }
 
     getEvents() {
         return new Promise((resolve, reject) => {
             const event = eventSchema.find().populate("user", "email");
             resolve(event);
-        })
+        });
     }
 }
 

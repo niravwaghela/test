@@ -6,7 +6,7 @@ class Controls {
     generatePassword(password) {
         return bcrypt.hash(password, 10);
     }
-
+    
     login(value) {
         let userData = value;
         return new Promise((resolve, reject) => {
@@ -30,8 +30,10 @@ class Controls {
                         if (cnpass) {
                              let payload = {subject: user._id }
                              let token = jwt.sign(payload, 'itiswhatitis')
+                             console.log(user);
+                             
                             resolve({
-                                "id": user._id,
+                                "userData": user._id,
                                 success: true,
                                 token
                             });

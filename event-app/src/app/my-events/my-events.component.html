@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="row">
+    
+    <div class="col-lg-4 cardW cardiac" *ngFor="let event of data; let i=index">
+      <div class="card">
+        <div class="card-body cardBody">
+          <h4 class="card-header cardc card-title">
+            {{ event.eventName | uppercase }}
+          </h4>
+          <p class="card-text">
+            Description:{{ event.eventDescription }}<br />
+            Duration:{{ event.eventDuration }}hrs<br />
+            Location:{{ event.eventLocation }}<br />
+            Fees:{{ event.eventFees | currency: "&#8377;" }}<br />
+          </p>
+          <div class="card-footer cardc">
+
+            <div *ngIf="event.registerUser.length > 0">
+              Registered User: {{ event.registerUser.length }}
+              <!-- Registered User:{{event.registerUser.userData.firstName}} -->
+            </div>
+            <div>
+              <button *ngIf = "event.user === user" (click)="editEvent(i)" type="button" class="btn btn-info btn-small btn-space">
+                Edit Event
+              </button>
+              <button 
+              *ngIf = "!(event.user === user)"
+                type="button"
+                class="btn btn-info btn-small"
+                (click)="registerUser(i)"
+              >
+                Register
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

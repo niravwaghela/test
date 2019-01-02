@@ -10,8 +10,10 @@
 
 <div class="container-fluid">
   <div class="row">
-    
-    <div class="col-lg-4 cardW cardiac" *ngFor="let event of data; let i=index">
+    <div
+      class="col-lg-4 cardW cardiac"
+      *ngFor="let event of data; let i = index"
+    >
       <div class="card">
         <div class="card-body cardBody">
           <h4 class="card-header cardc card-title">
@@ -27,13 +29,24 @@
             created by: {{ event.user.email }}
 
             <div *ngIf="event.registerUser.length > 0">
-              Registered User: {{ event.registerUser }}
+              Registered User: {{ event.registerUser.length }}
             </div>
             <div>
-              <button *ngIf = "event.user._id === user" type="button" class="btn btn-info btn-small btn-space">
+              <button
+                *ngIf="event.user._id === user"
+                (click)="editEvent(i)"
+                type="button"
+                class="btn btn-info btn-small btn-space"
+              >
                 Edit Event
-              </button>
-              <button 
+              </button> 
+              <button
+                *ngIf="event.user._id === user"
+                type="button"
+                class="btn btn-info btn-small"
+              >Delete Event</button>
+              <button
+                *ngIf="!(event.user._id === user)"
                 type="button"
                 class="btn btn-info btn-small"
                 (click)="registerUser(i)"

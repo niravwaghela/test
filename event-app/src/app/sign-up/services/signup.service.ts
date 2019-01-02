@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class signUpService {
-  url = "http://localhost:3003/signUp";
+  url = "http://localhost:3005/signUp";
 
   constructor(private http: HttpClient) {}
   signUp(user: any) {

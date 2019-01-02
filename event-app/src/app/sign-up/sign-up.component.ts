@@ -3,6 +3,7 @@ import { Validators, FormBuilder } from "@angular/forms";
 import { signUpService } from "./services/signup.service";
 import { passwordValidator } from "./validator";
 import { Router } from "@angular/router";
+import { GrowlService } from "../growl.service";
 
 @Component({
   selector: "signUp",
@@ -14,7 +15,8 @@ export class signUpComponent {
   constructor(
     private fb: FormBuilder,
     private signUpService: signUpService,
-    private router: Router
+    private router: Router,
+    private growlService : GrowlService
   ) {}
 
   signUpForm = this.fb.group(
@@ -31,10 +33,13 @@ export class signUpComponent {
   onSubmit(signUpForm) {
     this.signUpService.signUp(signUpForm).subscribe(data => {
       console.log(data);
-      // localStorage.setItem('token' , data.token)
       if (data.success === true) {
-        this.router.navigate(["/loginForm"]);
+        this.growlService.addSingle('Successfully Signed Up! Login to continue.');
+         this.router.navigate(["/loginForm"]);
       }
+    },
+    error=>{
+
     });
     // if (this.userData.success) {
     //   this.router.navigate(["loginForm"]);

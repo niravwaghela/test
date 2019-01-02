@@ -19,6 +19,14 @@ import { allEventsService } from "./dashboard-content/services/allEvents.service
 import { CreateEventService } from "./create-event/services/createEvent";
 import { RegisterUserService } from "./dashboard-content/services/registerUser.service";
 import { TokenInterceptorService } from "./token-interceptor.service";
+import { EditEventComponent } from "./edit-event/edit-event.component";
+import { EditEventService } from "./edit-event/services/editEvent.service";
+import { updateEventService } from "./dashboard-content/services/updateEvent.service";
+import { MyEventsComponent } from "./my-events/my-events.component";
+import { ToastModule } from "primeng/toast";
+import { GrowlService} from './growl.service';
+import { MessageService } from 'primeng/api';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,14 +36,18 @@ import { TokenInterceptorService } from "./token-interceptor.service";
     DashboardComponent,
     CreateEventComponent,
     NavbarComponent,
-    DashboardContentComponent
+    DashboardContentComponent,
+    EditEventComponent,
+    MyEventsComponent
   ],
   imports: [
+    ToastModule,
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
     CommonModule,
     FormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
@@ -45,10 +57,14 @@ import { TokenInterceptorService } from "./token-interceptor.service";
     allEventsService,
     CreateEventService,
     RegisterUserService,
+    EditEventService,
+    GrowlService,
+    MessageService,
+    updateEventService,
     {
-      provide:HTTP_INTERCEPTORS,
-      useClass:TokenInterceptorService,
-      multi:true
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
     }
   ],
   bootstrap: [AppComponent]
