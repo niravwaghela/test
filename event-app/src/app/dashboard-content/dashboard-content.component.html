@@ -1,12 +1,3 @@
-<!-- <div *ngFor="let event of data | async"> -->
-
-<!--
-  <div class="row">
-    <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-    <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-    <div class="col-6 col-md-4">.col-6 .col-md-4</div>
-  </div>
--->
 
 <div class="container-fluid">
   <div class="row">
@@ -40,11 +31,7 @@
               >
                 Edit Event
               </button> 
-              <button
-                *ngIf="event.user._id === user"
-                type="button"
-                class="btn btn-info btn-small"
-              >Delete Event</button>
+              
               <button
                 *ngIf="!(event.user._id === user)"
                 type="button"
@@ -61,57 +48,3 @@
   </div>
 </div>
 
-<!--
-  <div class="card-deck row">
-  <div class="card col-6 col-md-4">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">{{event.eventName}}</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
--->
-<!--
-  <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">{{event.eventDescription}}
-          {{event.eventDuration}}
-        </p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img-top" src="..." alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">{{event.eventLocation}}
-          {{event.eventFees}}
-        </p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
--->
-
-<!--
-  <div class="offset-sm-3 col-lg-6 cardiac" >
-      <div class="card-deck">
-          <div class="card cardc">
-              <div class="card-body">
-                   <div class="card-title" *ngIf="!!item.bill||!!item.amount"><h2>Lead Customers</h2></div>
-                  <div class="card-title" *ngIf="item.bill||item.amount"><h2>Normal Customers</h2></div>
-
-                      <div><h3>Event Name:{{event.eventName}}</h3></div>
-                      <div><h3>Description:{{event.eventDescription}}</h3></div>
-                      <div><h3>Duration:{{event.eventDuration}}</h3></div>
-                      <div><h3>Locaiton:{{event.eventLocation}}</h3></div>
-                      <div><h3>Fees:{{event.eventFees}}</h3></div>
-              </div>
-          </div>
-      </div>
-  </div>
--->
-<!-- </div> -->

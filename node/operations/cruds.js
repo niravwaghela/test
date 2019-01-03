@@ -11,8 +11,7 @@ class Operation {
             eventFees,
             user
         } = value;
-        console.log(user);
-        
+
         return new Promise((resolve, reject) => {
             let eventsmodel = new eventSchema();
             eventsmodel.eventName = eventName;
@@ -24,7 +23,6 @@ class Operation {
             eventsmodel.save((error, eventsave) => {
                 if (error) {
                     reject(error);
-                    console.error(error);
                 } else {
                     resolve({ success: true });
                 }
@@ -40,14 +38,11 @@ class Operation {
                 if (error) {
                     reject(error);
                 } else {
-
                     event.registerUser.forEach(function(message) {
-                        Object.keys(message).forEach(function(prop) {    
+                        Object.keys(message).forEach(function(prop) {
                             console.log(prop + " = " + message[prop]);
                         });
                     });
-
-
 
                     event.registerUser.forEach(function(element) {
                         if (element === loggedInUser) {
@@ -60,7 +55,6 @@ class Operation {
                         if (error) {
                             reject(error);
                         } else {
-                            console.log(updatedUser);
                             resolve(updatedUser);
                         }
                     });
@@ -68,9 +62,23 @@ class Operation {
             });
         });
     }
+
+    deleteEvent(req) {
+        let { eventId } = req;
+        return new Promise((resolve, reject) => {
+            eventSchema.deleteOne({ _id: eventId }, (error, event) => {
+                if (error) {
+                    reject(error);
+                } else {
+
+                    resolve({success:true, message:"Event Deleted Successfully"});
+                }
+            });
+        });
+    }
+
     editEvent(req) {
         let { eventId } = req;
-        console.log(eventId);
         return new Promise((resolve, reject) => {
             eventSchema.findOne({ _id: eventId }, (error, event) => {
                 if (error) {
@@ -83,15 +91,12 @@ class Operation {
     }
 
     myEvents(req) {
-        let { loggedInId,
-        firstName,
-    lastName } = req;
+        let { loggedInId } = req;
 
         return new Promise((resolve, reject) => {
             eventSchema.find({ user: loggedInId }, (error, event) => {
-                console.log(event);
-                
-                resolve(event,firstName,lastName)
+
+                resolve(event);
             });
         });
     }

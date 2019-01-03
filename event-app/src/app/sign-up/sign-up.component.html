@@ -30,16 +30,12 @@
     <div class="form-group">
       <input
         type="email"
-        [class.is-invalid]="signUpForm.errors?.invalid"
         formControlName="email"
         class="form-control"
         name="email"
         email="true"
         placeholder="Email"
       />
-      <small class="text-danger" *ngIf="signUpForm.errors?.invalid"
-        >Enter a valid Email</small
-      >
     </div>
     <div class="form-group">
       <input
@@ -77,4 +73,3 @@
     Already have an account? <a [routerLink]="['/loginForm']">Sign in</a>
   </div>
 </div>
-{{ signUpForm.value | json }}

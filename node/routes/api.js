@@ -44,9 +44,24 @@ router.post("/signUp", (req, res) => {
         });
 });
 
+router.post("/deleteEvent", verifyToken , (req, res) => {
+    const operate = new operation();
+    
+    let eventId = req.body;
+    
+    operate
+        .deleteEvent(eventId)
+        .then(resp => {
+            res.status(200).json(resp);
+        })
+        .catch(error => {
+            res.status(400).json(error);
+        });
+
+});
 router.post("/myEvents", (req, res) => {
     const operate = new operation();
-    let  loggedIn  = req.body;
+    let loggedIn = req.body;
     operate
         .myEvents(loggedIn)
         .then(resp => {

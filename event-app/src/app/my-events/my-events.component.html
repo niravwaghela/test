@@ -23,6 +23,12 @@
               <button *ngIf = "event.user === user" (click)="editEvent(i)" type="button" class="btn btn-info btn-small btn-space">
                 Edit Event
               </button>
+              <button
+                *ngIf="event.user === user"
+                (click)="deleteEvent(i)"
+                type="button"
+                class="btn btn-info btn-small"
+              >Delete Event</button>
               <button 
               *ngIf = "!(event.user === user)"
                 type="button"

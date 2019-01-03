@@ -12,7 +12,6 @@ class Controls {
         return new Promise((resolve, reject) => {
             User.findOne({ email: userData.email }, (error, user) => {
                 if (error) {
-                    console.log(error);
                     reject({
                         status: "error",
                         message: error
@@ -30,7 +29,6 @@ class Controls {
                         if (cnpass) {
                              let payload = {subject: user._id }
                              let token = jwt.sign(payload, 'itiswhatitis')
-                             console.log(user);
                              
                             resolve({
                                 "userData": user._id,
@@ -71,7 +69,6 @@ class Controls {
                             user.save((error, registeredUser) => {
                                 if (error) {
                                     reject(error);
-                                    console.error(error);
                                 } else {
                                     //  let payload = { subject: registeredUser._id };
                                     //  let token = jwt.sign(payload, "itiswhatitis");
