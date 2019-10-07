@@ -54,10 +54,12 @@ export class DashboardContentComponent implements OnInit {
 
     this.registerUserService.register(registeredUser).subscribe(
       data => {
+        this.data = data.filter(event => this.user !== event.user._id);
+        console.log(data)
         this.growlService.addSingle("Registered");
-        this.allEventService.allEvents().subscribe(data => {
-          this.data = data.filter(event => this.user !== event.user._id);
-        });
+        // this.allEventService.allEvents().subscribe(data => {
+        //   this.data = data.filter(event => this.user !== event.user._id);
+        // });
       },
       error => {
         this.growlService.showError(`${error.error.error}`);

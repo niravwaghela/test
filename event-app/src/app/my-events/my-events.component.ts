@@ -22,7 +22,7 @@ export class MyEventsComponent implements OnInit {
       loggedInId: this.user
     };
     this.myEvents.getMyEvents(this.loggedInUser).subscribe(resp => {
-      console.log(resp);
+      console.log(resp , "fresh");
       this.data = resp;
     });
   }
@@ -30,15 +30,14 @@ export class MyEventsComponent implements OnInit {
   deleteEvent(index: number) {
     console.log(index);
     let eventIdDel = {
-      eventId: this.data[index]._id
+      eventId: this.data[index]._id,
+      loggedInId:this.user
     };
     console.log(eventIdDel.eventId);
 
     this.myEvents.deleteEvents(eventIdDel).subscribe(resp => {
-      console.log(resp);
-      this.myEvents.getMyEvents(this.loggedInUser).subscribe(resp => {
-        this.data = resp;
-      });
+      console.log(resp, "deleted");
+      this.data = resp.data;
 
       this.growlService.addSingle(`${resp.message}`);
     });
